@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - Démo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 font-sans text-gray-900 flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="bg-slate-900 text-white w-64 flex-shrink-0 hidden md:flex flex-col transition-all duration-300">
+        <div class="h-16 flex items-center px-6 border-b border-slate-800">
+            <div class="flex items-center gap-2 font-bold text-xl tracking-wider">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center"><i data-lucide="bar-chart-2" class="w-5 h-5"></i></div>
+                DataViz
+            </div>
+        </div>
+        <nav class="flex-1 py-6 px-3 space-y-1 overflow-y-auto">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 bg-blue-600 text-white rounded-lg transition-colors">
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Vue d'ensemble
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">
+                <i data-lucide="users" class="w-5 h-5"></i> Utilisateurs
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">
+                <i data-lucide="shopping-bag" class="w-5 h-5"></i> Ventes
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">
+                <i data-lucide="settings" class="w-5 h-5"></i> Paramètres
+            </a>
+        </nav>
+        <div class="p-4 border-t border-slate-800">
+            <a href="index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm">
+                <i data-lucide="log-out" class="w-4 h-4"></i> Retour au Portfolio
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <!-- Top Header -->
+        <header class="bg-white shadow-sm h-16 flex items-center justify-between px-6 z-10">
+            <div class="flex items-center gap-4">
+                <button class="md:hidden text-gray-500 hover:text-gray-700">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h1 class="text-xl font-semibold text-gray-800">Tableau de bord</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="p-2 text-gray-400 hover:text-blue-600 transition-colors relative">
+                    <i data-lucide="bell" class="w-5 h-5"></i>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
+                </button>
+                <div class="w-8 h-8 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm">JD</div>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <main class="flex-1 overflow-y-auto p-6">
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Revenu Total</p>
+                            <h3 class="text-2xl font-bold text-gray-900 mt-1">45,231 €</h3>
+                        </div>
+                        <div class="p-2 bg-green-50 text-green-600 rounded-lg"><i data-lucide="dollar-sign" class="w-5 h-5"></i></div>
+                    </div>
+                    <div class="flex items-center text-sm text-green-600 font-medium">
+                        <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i> +20.1% <span class="text-gray-400 ml-2 font-normal">vs mois dernier</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Visiteurs Actifs</p>
+                            <h3 class="text-2xl font-bold text-gray-900 mt-1">2,345</h3>
+                        </div>
+                        <div class="p-2 bg-blue-50 text-blue-600 rounded-lg"><i data-lucide="users" class="w-5 h-5"></i></div>
+                    </div>
+                    <div class="flex items-center text-sm text-blue-600 font-medium">
+                        <i data-lucide="trending-up" class="w-4 h-4 mr-1"></i> +12.5% <span class="text-gray-400 ml-2 font-normal">vs mois dernier</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Commandes</p>
+                            <h3 class="text-2xl font-bold text-gray-900 mt-1">1,203</h3>
+                        </div>
+                        <div class="p-2 bg-purple-50 text-purple-600 rounded-lg"><i data-lucide="shopping-cart" class="w-5 h-5"></i></div>
+                    </div>
+                    <div class="flex items-center text-sm text-red-500 font-medium">
+                        <i data-lucide="trending-down" class="w-4 h-4 mr-1"></i> -3.2% <span class="text-gray-400 ml-2 font-normal">vs mois dernier</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <p class="text-sm text-gray-500 font-medium">Taux de Rebond</p>
+                            <h3 class="text-2xl font-bold text-gray-900 mt-1">42.3%</h3>
+                        </div>
+                        <div class="p-2 bg-orange-50 text-orange-600 rounded-lg"><i data-lucide="activity" class="w-5 h-5"></i></div>
+                    </div>
+                    <div class="flex items-center text-sm text-green-600 font-medium">
+                        <i data-lucide="trending-down" class="w-4 h-4 mr-1"></i> -1.5% <span class="text-gray-400 ml-2 font-normal">vs mois dernier</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 lg:col-span-2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Aperçu des Revenus</h3>
+                    <canvas id="revenueChart" height="300"></canvas>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Sources de Trafic</h3>
+                    <canvas id="trafficChart" height="300"></canvas>
+                </div>
+            </div>
+
+            <!-- Recent Activity Table -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="px-6 py-4 border-b border-gray-100">
+                    <h3 class="text-lg font-bold text-gray-800">Transactions Récentes</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-gray-600">
+                        <thead class="bg-gray-50 text-gray-900 font-semibold">
+                            <tr>
+                                <th class="px-6 py-3">ID</th>
+                                <th class="px-6 py-3">Client</th>
+                                <th class="px-6 py-3">Date</th>
+                                <th class="px-6 py-3">Montant</th>
+                                <th class="px-6 py-3">Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4">#TRX-9821</td>
+                                <td class="px-6 py-4 font-medium text-gray-900">Sophie Martin</td>
+                                <td class="px-6 py-4">01 Fév 2026</td>
+                                <td class="px-6 py-4">120.00 €</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Complété</span></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4">#TRX-9822</td>
+                                <td class="px-6 py-4 font-medium text-gray-900">Lucas Dubois</td>
+                                <td class="px-6 py-4">01 Fév 2026</td>
+                                <td class="px-6 py-4">45.50 €</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-semibold">En attente</span></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4">#TRX-9823</td>
+                                <td class="px-6 py-4 font-medium text-gray-900">Emma Bernard</td>
+                                <td class="px-6 py-4">31 Jan 2026</td>
+                                <td class="px-6 py-4">230.00 €</td>
+                                <td class="px-6 py-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Complété</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Chart Configuration
+        const ctxRevenue = document.getElementById('revenueChart').getContext('2d');
+        new Chart(ctxRevenue, { type: 'line', data: { labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'], datasets: [{ label: 'Revenus (€)', data: [12000, 19000, 15000, 25000, 22000, 30000], borderColor: '#2563eb', backgroundColor: 'rgba(37, 99, 235, 0.1)', tension: 0.4, fill: true }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { borderDash: [2, 4] } }, x: { grid: { display: false } } } } });
+
+        const ctxTraffic = document.getElementById('trafficChart').getContext('2d');
+        new Chart(ctxTraffic, { type: 'doughnut', data: { labels: ['Mobile', 'Desktop', 'Tablette'], datasets: [{ data: [65, 25, 10], backgroundColor: ['#2563eb', '#9333ea', '#06b6d4'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } }, cutout: '70%' } });
+    </script>
+</body>
+</html>
